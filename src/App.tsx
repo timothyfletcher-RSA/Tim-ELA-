@@ -215,9 +215,9 @@ export default function App() {
         
         REQUIREMENTS:
         - Be constructive, accurate, and classroom-practical.
-        - Focus on helping students improve without fully rewriting their work.
+        - Feedback must be HIGHLY ACTIONABLE. Avoid vague advice. Instead of "improve analysis", provide a specific "Instead of X, try Y" example.
+        - Provide concrete, task-oriented next steps that a student can implement immediately.
         - Identify PEEL elements as Secure, Partial, or Missing.
-        - Provide concise, actionable next steps.
         - Distinguish summary from analysis.
         - Use "you" when addressing students.
         - Output MUST be valid JSON.
@@ -317,10 +317,10 @@ export default function App() {
 
   // --- Render Helpers ---
 
-  const ScoreBadge = ({ score, max = 4 }: { score: number, max?: number }) => {
+  const ScoreBadge = ({ label, score, max = 4 }: { label: string, score: number, max?: number }) => {
     return (
       <div className="text-center border border-border p-2 min-w-[60px]">
-        <span className="text-[10px] font-bold uppercase text-gray-400 block mb-1">Score</span>
+        <span className="text-[10px] font-bold uppercase text-gray-400 block mb-1">{label}</span>
         <span className="text-xl font-black block leading-none">{score}/{max}</span>
       </div>
     );
@@ -561,9 +561,9 @@ export default function App() {
                           </div>
 
                           <div className="grid grid-cols-3 gap-4">
-                            <ScoreBadge score={result.scores.ideas} />
-                            <ScoreBadge score={result.scores.structure} />
-                            <ScoreBadge score={result.scores.language} />
+                            <ScoreBadge label="Ideas" score={result.scores.ideas} />
+                            <ScoreBadge label="Structure" score={result.scores.structure} />
+                            <ScoreBadge label="Use of Language" score={result.scores.language} />
                           </div>
 
                           <div className="space-y-4">
